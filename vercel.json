@@ -1,0 +1,41 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "Backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "Backend/public/**/*",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "Backend/server.js"
+        },
+        {
+            "src": "/registration.html",
+            "dest": "Backend/public/registration.html"
+        },
+        {
+            "src": "/login.html",
+            "dest": "Backend/public/login.html"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "Backend/public/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "Backend/public/$1"
+        }
+    ],
+    "env": {
+        "MONGODB_URI": "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/medical-portal?retryWrites=true&w=majority",
+        "JWT_SECRET": "your-secret-key-here",
+        "EMAIL_USER": "your-email@gmail.com",
+        "EMAIL_PASS": "your-email-password"
+    }
+} 

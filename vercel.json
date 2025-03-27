@@ -2,36 +2,26 @@
     "version": 2,
     "builds": [
         {
-            "src": "Backend/server.js",
-            "use": "@vercel/node"
+            "src": "Backend/public/HeamoScan/modelTrain/main.py",
+            "use": "@vercel/python"
         },
         {
-            "src": "Backend/public/**",
+            "src": "Backend/public/HeamoScan/modelTrain/templates/import.html",
             "use": "@vercel/static"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "Backend/server.js"
+            "dest": "Backend/public/HeamoScan/modelTrain/main.py"
         },
         {
             "src": "/",
-            "dest": "Backend/public/registration.html"
+            "dest": "Backend/public/HeamoScan/modelTrain/templates/import.html"
         },
         {
             "src": "/static/(.*)",
-            "dest": "Backend/public/static/$1"
-        },
-        {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "Backend/public/$1"
+            "dest": "Backend/public/HeamoScan/modelTrain/static/$1"
         }
-    ],
-    "env": {
-        "MONGODB_URI": "mongodb+srv://<your-username>:<your-password>@<your-cluster>.mongodb.net/medical-portal?retryWrites=true&w=majority"
-    }
+    ]
 } 
